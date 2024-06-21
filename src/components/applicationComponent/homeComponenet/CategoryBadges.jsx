@@ -1,18 +1,25 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useGetCategorieByPageLimitQuery } from "../../../App/Category/CategoryApi";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 const CategoryBadges = ({setFilterCategory}) => {
   const [catLimit, setCatLimit] = useState(10);
+  const [activeCondition, setactiveCondition] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterActive,setFilterActive]=useState(-1);
   
-
+  const loading=useSelector((state)=>state.loadingSlice.isLoading);
  
   const { data: categories } = useGetCategorieByPageLimitQuery({
     catLimit,page:currentPage
   });
+
+  useEffect(()=>{
+    setactiveCondition(loading==true?false:true);
+   
+  },[loading])
 
   //currently both all and new might use this method
   const fetchNew = () => {
@@ -37,6 +44,8 @@ const handleFilter=(category)=>{
   setFilterCategory(category.name);
   setFilterActive(category.id);
 }
+
+
   
   return (
     <section className=" container mx-auto px-6 sticky top-10 bg-gray-50 max-w-[78%] py-5 ">
@@ -52,7 +61,7 @@ const handleFilter=(category)=>{
           <button
           onClick={()=> handleFilter(category)}
             key={nanoid()}
-            className={`${filterActive==category.id?"bg-gray-500 text-white":"bg-gray-100 text-gray-800"} inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium   dark:bg-white/10 dark:text-white`}
+            className={`${filterActive==category.id && activeCondition==true?"bg-gray-500 text-white":"bg-gray-100 text-gray-800"} inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium   dark:bg-white/10 dark:text-white`}
           >
             {category.name}
           </button>

@@ -2,33 +2,19 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // import { setCurrentUser, setLoggedIn } from "../../App/SavingSlice/ProfileSlice";
 import { clearToken, setError, setIsAdmin, setLoggedIn, setToken, setUser } from "./AuthSlice";
 import Cookies from 'js-cookie';
+import { BaseQuery } from "../BaseQuery";
 
 
-const baseQuery=fetchBaseQuery({
-  baseUrl: 'http://127.0.0.1:8000/api/V1',
-  prepareHeaders: (headers,{getState}) => {
-    const token =getState().authSlice.token;
-   
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`)
-    }
 
-    return headers
-  },
-
-}
-)
 
 export const Auth = createApi({
   reducerPath: "auth",
-  baseQuery: async (args, api, extraOptions) => { 
-   return await baseQuery(args, api, extraOptions);
-  },
-
+  baseQuery:fetchBaseQuery(BaseQuery),
   endpoints: (builder) => ({
     dashboard:builder.query({
       query: () => `/dashboard`,
     }),
+  
     authUser:builder.query({
       query: () => `/user`,
     }),

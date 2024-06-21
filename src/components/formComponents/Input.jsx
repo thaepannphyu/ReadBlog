@@ -4,7 +4,7 @@ const Input = ({
   handleInputChange,
   value,
   name,
-  type,
+  type="text",
   className,
   placeholder,
 }) => {
@@ -37,7 +37,6 @@ export default Input;
 
 Input.propTypes = {
   placeholder: PropTypes.string,
-  type: PropTypes.string.isRequired,
   value: PropTypes.string,
   name: PropTypes.string,
   setValue: PropTypes.func,
