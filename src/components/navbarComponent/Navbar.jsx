@@ -12,10 +12,7 @@ const Navbar = () => {
 
   const {data:auth,isLoading,error}= useAuthUserQuery();
 
-  const dashboardFun=()=>{
-    if(auth?.isAdmin){
-    return ( <a className="mr-5 hover:text-gray-900">Dashboard</a>)}
-  }
+  
 
   const loginRegisterFun=()=>{
     
@@ -73,7 +70,7 @@ const Navbar = () => {
         <NavBarSearch/>
         <nav className="flex flex-wrap items-center text-base justify-center gap-7">
           <a className="mr-5 hover:text-gray-900">Write</a>
-          {dashboardFun()}
+         {auth?.isAdmin? <a className="mr-5 hover:text-gray-900">Dashboard</a>:""}
          { loginRegisterFun()}
         </nav>
       </div>
