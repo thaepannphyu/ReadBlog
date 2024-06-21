@@ -15,7 +15,7 @@ const DisplayedBlogs = ({ blogs }) => {
                 key={blog.id}
                 className="p-12 border-b-2 flex flex-col items-start">
                 <span className="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">
-                  CATEGORY
+                  Categorty
                 </span>
                 <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
                   {blog.title}

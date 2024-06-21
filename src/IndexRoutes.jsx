@@ -15,11 +15,9 @@ import CategoryEdit from "./components/dashboardComponent/categoryComponents/cat
 import Home from "./pages/application/Home";
 import DashboardLayout from "./pages/adminDashboard/DashboardLayout";
 
-const token = localStorage.getItem("token");
 
-if (token) {
-  console.log(token);
-}
+
+
 
 const Router = [
   {

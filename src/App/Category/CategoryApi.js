@@ -30,7 +30,7 @@ export const CategoryApi=createApi({
                   url: '/categories',
                   params:{limit: catLimit,...catOffset},
                 };
-                console.log("queryDetails",queryDetails)
+                
                 return queryDetails;
               },
               providesTags:["Category"],

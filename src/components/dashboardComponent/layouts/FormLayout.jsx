@@ -17,6 +17,6 @@ const FormLayout = ({title}) => {
 }
 
 export default FormLayout
-FormLayout.PropTypes={
+FormLayout.propTypes={
   title:PropTypes.string.isRequired
 }

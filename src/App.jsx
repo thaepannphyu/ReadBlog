@@ -8,9 +8,13 @@ import { useEffect } from "react";
 
 
 
+
 function App() {
+
+
   
   const location = useLocation();
+
 
   useEffect(() => {
     window.HSStaticMethods.autoInit();

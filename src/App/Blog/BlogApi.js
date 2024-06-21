@@ -42,7 +42,7 @@ export const BlogApi = createApi({
           url: '/blogs',
           params: queryParams,
         };
-        console.log('Request Details:', queryDetails);
+      
         return queryDetails;
       },
       invalidatesTags:["Blog"],

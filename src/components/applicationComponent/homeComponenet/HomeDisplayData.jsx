@@ -16,7 +16,7 @@ const HomeDisplayData = () => {
   const {data:blogs,isLoading}= useGetBlogsByPageQuery(6);
 
   
-  const loading=useSelector((state)=>state.loadingSlice.isLoading);
+  
 
  const dispatch=useDispatch();
 
@@ -27,6 +27,7 @@ const HomeDisplayData = () => {
     setDisplayedData(blogs);
   }
   dispatch(setLoading(searchLoading));
+  
 }, [searchedBlogs, searchLoading, dispatch, blogs]);
 
   if(isLoading==true){
@@ -38,11 +39,11 @@ const HomeDisplayData = () => {
       </main>
     )
   }
-  console.log(filterCategory)
+  
   return (
    
    <>
-       <CategoryBadges setFilterCategory={setFilterCategory} />
+       <CategoryBadges  setFilterCategory={setFilterCategory} />
        <main className="  container mx-auto px-6 sticky top-0 bg-gray-50 max-w-[78%] py-5  ">
        
        <DisplayedBlogs blogs={displayedData?.data}/>
