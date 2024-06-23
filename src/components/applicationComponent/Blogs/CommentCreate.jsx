@@ -44,7 +44,7 @@ const CommentCreate = ({ blogId }) => {
             </div>
             <div className="p-4 flex flex-col gap-5   overflow-y-auto">
               {allComments?.map((comment) => {
-                console.log(user);
+                
                 if (user?.data?.user.id == comment?.id) {
                   return (
                     <div key={nanoid()} className="w-[80%] self-end">
