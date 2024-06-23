@@ -26,8 +26,6 @@ const Login = () => {
       password
     }
     await   login(submitData);
-    
-    
   }
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const Login = () => {
         </div>
        <SubmitBtn btn="Login" />
     </form>
-    <p className="mt-6 text-center text-gray-600">Don't have an account? <a href="/user/register" className="text-blue-500">Register</a></p></>
+    <p className="mt-6 text-center text-gray-600">Don't have an account? <a href="../user/register" className="text-blue-500">Register</a></p></>
     
   )
 }

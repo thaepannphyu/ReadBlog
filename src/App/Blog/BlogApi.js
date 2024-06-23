@@ -63,7 +63,7 @@ export const BlogApi = createApi({
     updateBlogs: builder.mutation({
       query: ({ id, ...data }) => ({
         url: `blogs/${id}`,
-        method: 'PATCH',
+        method: 'PUT',
         body: data 
       }),
       invalidatesTags:["Blog","SingleBlog"],

@@ -10,44 +10,19 @@ import Pagination from "../../components/reusableComponent/Pagination";
 import { Link } from "react-router-dom";
 import Button from "../../components/reusableComponent/Button";
 import SearchBarWrapper from "../../components/reusableComponent/SearchBarWrapper";
-import { useSelector } from "react-redux";
-import { useEffect, useMemo, useState } from "react";
+import {  useState } from "react";
+import useGetDisplayedBlog from "../../hooks/useGetDisplayedBlog";
 
 const Blog = () => {
-  const [displayData, setDisplayData] = useState({});
+  const { isLoading,displayedData, setFilterCategory } = useGetDisplayedBlog();
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: getAllBlogs, isLoading } = useGetBlogsByPageQuery(currentPage);
-
-  //  console.log(getAllBlogs["meta"]['last_page'])
-  const Blogs = useMemo(() => {
-    return {
-      data: getAllBlogs?.data,
-      links: getAllBlogs?.meta?.links,
-      isLoading,
-      lastPage: getAllBlogs?.meta?.last_page,
-    };
-  }, [getAllBlogs, isLoading]);
+ 
 
 
-  const query = useSelector((state) => state.blogQueryFilter.query);
-  const { data: filtered, isLoading: loadBysearch } =
-    useFilterBlogsQuery(query);
-  const searched = useMemo(() => {
-    return {
-      data: filtered?.data,
-      links: filtered?.meta?.links,
-      isLoading: loadBysearch,
-    };
-  }, [filtered, loadBysearch]);
+ 
 
   
-  useEffect(() => {
-    if (searched) {
-      setDisplayData(searched);
-    } else {
-      setDisplayData(Blogs);
-    }
-  }, [setDisplayData, searched, Blogs, query]);
+
 
   if (isLoading == true) {
     return <>Loading</>;
@@ -60,10 +35,10 @@ const Blog = () => {
         <Link to="/dashboard/blog/create">
           <Button btn="CREATE BLOG" />
         </Link>
-        <SearchBarWrapper />
+        <SearchBarWrapper setFilterCategory={setFilterCategory} />
       </div>
-      <BlogTable blogs={displayData} />
-      {isLoading == false ? (
+      <BlogTable isLoading={isLoading} blogs={displayedData} />
+      {/* {isLoading == false ? (
         <Pagination
           currentPage={currentPage}
           lastPage={Blogs?.lastPage}
@@ -72,7 +47,7 @@ const Blog = () => {
         />
       ) : (
         ""
-      )}
+      )} */}
     </section>
   );
 };

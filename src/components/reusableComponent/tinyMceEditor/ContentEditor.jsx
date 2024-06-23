@@ -18,8 +18,12 @@ const ContentEditor = ({content,setContent}) => {
             onInit={(_evt, editor) => (editorRef.current = editor)}
             initialValue={content?content:"<p>This is the initial content of the editor.</p>"}
             init={{
-              menubar: false,
+              resize: true,
+              min_height: 600,
+              menubar: true,
+              
               plugins: [
+                "autoresize",
                 "advlist",
                 "autolink",
                 "lists",

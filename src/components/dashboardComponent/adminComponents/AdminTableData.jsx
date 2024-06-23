@@ -6,22 +6,25 @@ import { useUpdateUserMutation } from "../../../App/User/UserApi";
 const AdminTableData = ({ users }) => {
   
   const [makeAdmin] = useUpdateUserMutation();
-
+ 
 
   const handleMakeAdmin = async (user) => {
-
     try {
-
       const id = user.id;
       const submitData={
            is_admin: !user.is_admin
       }
-     await makeAdmin({id, ...submitData} );
-      
+    await makeAdmin({id, ...submitData} );
+  
+     
+   
     } catch (error) {
       console.error("Failed to delete the blog:", error);
     }
   };
+
+  
+  
 
   return (
     <>
@@ -45,7 +48,7 @@ const AdminTableData = ({ users }) => {
 
             <td className="px-6 flex gap-10 justify-end py-4 whitespace-nowrap text-end text-sm font-medium">
               <button
-                onClick={() => handleMakeAdmin(user)}
+                onClick={() => (handleMakeAdmin(user))}
                 className={`inline-flex hover:text-red-300 active:text-red-700 items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600  disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400`}
                 >
                 {user.is_admin==true?"Remove admin":"Make admin"}

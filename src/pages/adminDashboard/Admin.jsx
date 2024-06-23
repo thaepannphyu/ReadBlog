@@ -25,7 +25,7 @@ useEffect(()=>{
 
 
   return <>
-      <section className="flex flex-col gap-10">
+      <section className="container mx-auto flex flex-col gap-10">
       <Title title="Admin Management" />
       <div className="flex">
         <Link to="/dashboard/admin/create">

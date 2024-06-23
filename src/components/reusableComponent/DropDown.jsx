@@ -4,14 +4,16 @@ import PropTypes from "prop-types";
 
 
 
-const DropDown=(props) =>{
+const DropDown=({setFilterCategory,data}) =>{
   
- 
+ const handleChange=(e)=>{
+  setFilterCategory(e.target.value)
+ }
   return (
 
-          <select name="category"  onChange={(e)=>props?.handleInputChange(e)}>
+          <select name="category"  onChange={handleChange}>
             <option value="">ALL</option>
-              {props?.data?.map((each,index) => (
+              {data?.map((each,index) => (
                 
                   <option key={index} value={each.name}>{each.name}</option>
               ))}
@@ -22,6 +24,6 @@ const DropDown=(props) =>{
 
 export default DropDown;
 DropDown.propTypes={
-  handleInputChange:PropTypes.func.isRequired,
+  setFilterCategory:PropTypes.func.isRequired,
   data:PropTypes.array
 }

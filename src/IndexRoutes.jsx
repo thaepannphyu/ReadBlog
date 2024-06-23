@@ -14,6 +14,9 @@ import CategoryCreate from "./components/dashboardComponent/categoryComponents/c
 import CategoryEdit from "./components/dashboardComponent/categoryComponents/categoryForm/CategoryEdit";
 import Home from "./pages/application/Home";
 import DashboardLayout from "./pages/adminDashboard/DashboardLayout";
+import BlogSubmission from "./components/applicationComponent/BlogForm/BlogSubmission";
+import BlogUpdate from "./components/applicationComponent/BlogForm/BlogUpdate";
+import BlogPage from "./pages/application/BlogPage"
 
 
 
@@ -28,6 +31,20 @@ const Router = [
       {
         index:true,
         element: <Home />,
+      },
+      {
+        path:"blog",
+        element: <BlogPage />,
+        children:[
+          {
+            path:"create",
+            element: <BlogSubmission />,
+          },
+          {
+            path:":blogId/edit",
+            element:<BlogUpdate/>,
+          },
+        ]
       },
     ],
   },
@@ -116,3 +133,5 @@ const Router = [
 ];
 
 export default Router;
+
+

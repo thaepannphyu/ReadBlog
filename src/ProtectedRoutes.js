@@ -2,12 +2,18 @@
 import { useSelector } from "react-redux";
 
 // import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import { useDashboardQuery } from "./App/Auth/Auth";
+import { useEffect } from "react";
 
 
 const ProtectedRoutes=({children})=>{
   
+  const location = useLocation();
+
+  useEffect(() => {
+    window.HSStaticMethods.autoInit();
+  }, [location.pathname]);
     const isAdmin = useSelector((state) => state.authSlice.isAdmin);
      
     const nav=useNavigate();

@@ -1,24 +1,16 @@
 
-import { useLogoutMutation } from '../../App/Auth/Auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLoggedIn } from '../../App/User/ProfileSlice';
+
+import useHandleLogout from '../../hooks/useHandleLogout';
+import useHandleLogin from '../../hooks/useHandleLogin';
 
 const Profile = () => {
-  const isLoggedIn=useSelector(state=>state.authSlice.isLoggedIn);
-  const [logout]= useLogoutMutation();
-  const dispatch=useDispatch();
+  const {isLoggedIn}= useHandleLogin();
+
+  const {handleLogout}= useHandleLogout();
+ 
 
 
-  const handleLogout = async () => {
-    try {
-      await logout().unwrap(); // Ensure the logout mutation is called correctly
-      dispatch(setLoggedIn(false));
-      
-    } catch (error) {
-      console.error('Failed to logout:', error);
-    }
-  };
-console.log(isLoggedIn);
+ console.log(isLoggedIn )
 
   return (
     <div className=" flex flex-col w-full justify-center items-center bg-white dark:bg-gray-800 shadow-md rounded-lg">
@@ -28,9 +20,7 @@ console.log(isLoggedIn);
           src=""
           alt="User Profile"
         />
-       
           <button className="text-center text-sm font-semibold text-gray-900 dark:text-white">
-            
           </button>
        
       </div>

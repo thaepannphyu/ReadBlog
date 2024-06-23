@@ -7,7 +7,7 @@ import AdminTableData from "./AdminTableData";
 const AdminTable = ({users}) => {
 
     return (
-      <div className="flex flex-col gap-10">
+      <div className="  flex flex-col gap-10">
       <div className="-m-1.5 overflow-x-auto">
         <div className="p-1.5 min-w-full inline-block align-middle">
           <div className="overflow-hidden">

@@ -4,7 +4,11 @@ import {  useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
+
+//needed to refactor
+
 const CategoryBadges = ({setFilterCategory}) => {
+
   const [catLimit, setCatLimit] = useState(10);
   const [activeCondition, setactiveCondition] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +22,6 @@ const CategoryBadges = ({setFilterCategory}) => {
 
   useEffect(()=>{
     setactiveCondition(loading==true?false:true);
-   
   },[loading])
 
   //currently both all and new might use this method
@@ -33,7 +36,6 @@ const CategoryBadges = ({setFilterCategory}) => {
     setCatLimit(10);
     if(currentPage<categories?.meta?.last_page){
       setCurrentPage(currentPage+1);}
-
       if(currentPage==categories?.meta?.last_page){
         setCurrentPage(1);}
     
@@ -48,7 +50,7 @@ const handleFilter=(category)=>{
 
   
   return (
-    <section className=" container mx-auto px-6 sticky top-10 bg-gray-50 max-w-[78%] py-5 ">
+    <section className=" container mx-auto px-6 sticky top-[50px] bg-gray-50 max-w-[78%] py-5 ">
       <div className="flex flex-row flex-nowrap overflow-hidden items-center justify-between">
       <button
           type="button"

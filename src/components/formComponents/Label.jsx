@@ -4,7 +4,7 @@ const Label = ({label}) => {
   return (
     <label
             htmlFor="af-account-full-name"
-            className="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
+            className="block text-gray-700 font-bold mb-2  mt-2.5 dark:text-gray-200">
            {label}
     </label>
   )
