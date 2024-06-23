@@ -1,40 +1,17 @@
-import { useState } from "react";
+
 import InputLabel from "../../../formComponents/InputLabel";
 import Label from "../../../formComponents/Label";
 import SubmitBtn from "../../../formComponents/SubmitBtn";
 import ContentEditor from "../../../reusableComponent/tinyMceEditor/ContentEditor";
-import { useCreateCategoryMutation } from "../../../../App/Category/CategoryApi";
-import { useNavigate } from "react-router-dom";
+import useCategoryCreate from "../../../../hooks/useCategoryCreate";
 
 const CategoryCreate = () => {
-    const [name,setName]=useState();
-    const [error,setError]=useState();
-
-    const [description,setDescription]=useState();
-    const [createCategory]=useCreateCategoryMutation();
-    const nav=useNavigate()
-    const handleCreateCategory = async (e) => {
-        e.preventDefault();
     
-        const submitData = {
-          name:name,
-          description:description
-        };
-       
-        try{
-        await  createCategory(JSON.stringify(submitData)).unwrap();
-
-
-          nav("/dashboard/categories");
-        }catch(err){
-          setError(err);
-          
-        }
-      
-
-      };
-
-      console.log(error)
+  const {name,
+    setName,error,
+    setDescription,
+    handleCreateCategory}=useCategoryCreate();
+     
   return (
     <div>
       <form onSubmit={(e) => handleCreateCategory(e)}>

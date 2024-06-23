@@ -18,6 +18,8 @@ const BlogTableData = ({ blogs }) => {
     }
   };
 
+  console.log(blogs)
+
 
   return (
     <>

@@ -1,6 +1,8 @@
 
 import PropTypes from "prop-types";
 
+
+//refactor REHANDLE
 const Pagination = (props) => {
 
   const shouldDisplayPage = (page) => {

@@ -1,20 +1,25 @@
 import { PropTypes } from "prop-types";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setQuery } from "../../App/Blog/BlogQueryFilterSlice";
 
-const Search = (props) => {
+const Search = () => {
 
-const [query,setQuery]= useState("");
+  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
 
-const queryHandler=(e)=>{
-  const value= e.target?.value;
-  props?.handleInputChange(e);
-  setQuery(value);
-}
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+  };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(setQuery(value));//store in global state
+  };
 
   return (
    
-      <div
+      <form onSubmit={handleClick}
         className="relative"
         data-hs-combo-box='{
         "groupingType": "default",
@@ -28,9 +33,9 @@ const queryHandler=(e)=>{
           
           <input
            name="search"
-            onChange={(e)=>queryHandler(e)}
+            onChange={(e)=>handleInputChange(e)}
             type="text"
-            value={query}
+            value={value}
             className="py-3 ps-10 pe-4 block w-full border-gray-200 rounded-s-none rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
             placeholder="Type a name"
             data-hs-combo-box-input=""
@@ -64,7 +69,7 @@ const queryHandler=(e)=>{
           />
         </div>
         {/* End SearchBox Dropdown */}
-      </div>
+      </form>
   );
 };
 

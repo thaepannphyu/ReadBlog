@@ -1,50 +1,15 @@
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  useGetSingleBlogQuery,
-  useUpdateBlogsMutation,
-} from "../../../../App/Blog/BlogApi";
+import { useParams } from "react-router-dom";
 import InputLabel from "../../../formComponents/InputLabel";
-
 import SubmitBtn from "../../../formComponents/SubmitBtn";
-import { useEffect, useState } from "react";
 import Label from "../../../formComponents/Label";
 import ContentEditor from "../../../reusableComponent/tinyMceEditor/ContentEditor";
+import useBlogUpdate from "../../../../hooks/useBlogUpdate";
 
 const BlogEdit = () => {
   //fetch single data
   const { blogId } = useParams();
-
-  const { data: singleblog, isLoading } = useGetSingleBlogQuery(blogId);
-
-  //track value changes from input to update
-  // const [intro,setIntro]=useState("");
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-
-  useEffect(() => {
-    // setIntro(singleblog?.data?.intro);
-    setTitle(singleblog?.data?.title);
-    setBody(singleblog?.data?.body);
-  }, [
-    singleblog?.data?.intro,
-    singleblog?.data?.title,
-    singleblog?.data?.body,
-  ]);
-
-  const [updateBlog] = useUpdateBlogsMutation();
-
-  const nav = useNavigate();
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    const submitData = {
-      id: blogId,
-      title: title,
-      body: body,
-    };
-
-    await updateBlog(submitData);
-    nav("/blog");
-  };
+  const { title, setTitle, body, setBody, handleUpdate, isLoading } = useBlogUpdate(blogId);
+ 
 
   if (isLoading == "false") {
     return <>loading</>;

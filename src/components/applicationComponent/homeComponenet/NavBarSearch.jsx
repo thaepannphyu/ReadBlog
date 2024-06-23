@@ -1,13 +1,12 @@
 
-import {  useEffect, useState } from "react"
+import {  useState } from "react"
 import Input from "../../formComponents/Input"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setQuery } from "../../../App/Blog/BlogQueryFilterSlice";
 
 const NavBarSearch = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
-
 
   const handleInputChange = (e) => {
     setValue(e.target.value);
@@ -15,7 +14,7 @@ const NavBarSearch = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(setQuery(value));
+    dispatch(setQuery(value));//store in global state
   };
 
   return (

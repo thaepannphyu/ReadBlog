@@ -4,8 +4,7 @@ import BlogTableData from "./BlogTableData";
 
 // import Pagination from "./Pagination";
 
-const BlogTable = ({blogs}) => {
- 
+const BlogTable = ({isLoading,blogs}) => {
 
 
     return (
@@ -25,7 +24,7 @@ const BlogTable = ({blogs}) => {
                 </tr>
               </thead>
               <tbody>
-             {blogs?.isLoading==false?<BlogTableData blogs={blogs.data}/>:<tr>
+             {isLoading==false?<BlogTableData blogs={blogs?.data}/>:<tr>
               <td className=" col-span-5 text-center">Empty Data</td></tr>}
               </tbody>
             </table>
@@ -40,5 +39,6 @@ const BlogTable = ({blogs}) => {
   
   export default BlogTable
   BlogTable.propTypes={
-    blogs:PropTypes.object
+    blogs:PropTypes.object,
+    isLoading:PropTypes.bool
   }

@@ -16,7 +16,7 @@ const InputLabel = ({name,labelText,placeholder,type,value="",setValue,className
 
     <>
       {/*Label */}
-      <div className="sm:col-span-3">
+      <div className="sm:col-span-3 block text-gray-700 font-bold mb-2">
         <Label label={labelText}/>
       </div>
 
