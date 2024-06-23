@@ -1942,6 +1942,14 @@ video {
   opacity: 1;
 }
 
+.open.hs-overlay-open\:z-10 {
+  z-index: 10;
+}
+
+.open.hs-overlay-open\:z-\[100\] {
+  z-index: 100;
+}
+
 .open.hs-overlay-open\:translate-x-0 {
   --tw-translate-x: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1953,6 +1961,14 @@ video {
 
 .open.hs-overlay-open\:duration-500 {
   transition-duration: 500ms;
+}
+
+.open .hs-overlay-open\:z-10 {
+  z-index: 10;
+}
+
+.open .hs-overlay-open\:z-\[100\] {
+  z-index: 100;
 }
 
 .open .hs-overlay-open\:translate-x-0 {
@@ -2073,6 +2089,11 @@ video {
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:px-3 {

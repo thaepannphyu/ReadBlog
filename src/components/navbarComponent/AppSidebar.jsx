@@ -6,14 +6,19 @@ import useHandleLogout from "../../hooks/useHandleLogout";
 import useHandleLogin from "../../hooks/useHandleLogin";
 
 
-const AppSidebar = () => {
+const AppSidebar = ({sidebar}) => {
     const { handleLogout } = useHandleLogout();
- 
+  
+  
   const { isLoggedIn, auth, handleLogin } = useHandleLogin();
  
+ 
+  
+  
   return (
   
   <div
+   ref={sidebar}
     id="appNavBar"
     className="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 left-0 transition-transform duration-300 transform h-full max-w-xs w-full z-[80] bg-white shadow-lg border-r border-gray-200"
     tabIndex="-1">

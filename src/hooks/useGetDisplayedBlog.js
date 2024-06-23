@@ -49,7 +49,7 @@ const useSearchedBlog = () => {
   const { data: searchedBlogs, isLoading: searchLoading } = useFilterBlogsQuery(
     { search: query, category: filterCategory }
   );
-  console.log(filterCategory)
+  
   return {
     searchedBlogs,
     searchLoading,

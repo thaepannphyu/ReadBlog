@@ -33,7 +33,7 @@ const useBlogUpdate = (blogId) => {
 
     try{
       const data=await updateBlog(submitData);
-      console.log(data   );
+    
       setUpdatedData(data);
       navigate("/");
     }catch(err){
