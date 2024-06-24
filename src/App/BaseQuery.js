@@ -9,7 +9,7 @@ export const BaseQuery = {
     }
     headers.set("Accept", "application/json");
     headers.set("Content-Type", "application/json");
-    headers.set("Access-Control-Allow-Origin","https://read-blog-ppa11ompq-thaepannphyus-projects.vercel.app")
+    headers.set("Access-Control-Allow-Origin","https://read-blog.vercel.app/")
     return headers;
   },
 };
