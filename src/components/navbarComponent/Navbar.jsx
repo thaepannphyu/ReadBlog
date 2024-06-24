@@ -18,16 +18,13 @@ const Navbar = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const sidebar = useRef(null);
-  
+
   const handleCLick = () => {
-    setOpenSideBar(true);
-    console.log(sidebar.current.id)
-    const modal=new HSOverlay(sidebar.current)
-
-    if(openSideBar){
-      modal.open()
-    }
-
+    
+    const modal = new HSOverlay(sidebar.current);
+  console.log(modal.open()) ;
+   
+      
   };
 
   if (authLoading === false) {
