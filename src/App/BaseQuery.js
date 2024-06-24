@@ -8,8 +8,8 @@ export const BaseQuery = {
       headers.set("authorization", `Bearer ${token}`);
     }
     headers.set("Accept", "application/json");
-    headers.set("Content-Type", "application/json");
-    headers.set("Access-Control-Allow-Origin","https://read-blog.vercel.app/")
+    headers.set("Content-Type", "application/json")
+    
     return headers;
   },
 };
